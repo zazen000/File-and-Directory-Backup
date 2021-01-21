@@ -1,4 +1,4 @@
-# backup
+# File and Directory Backup, Part 1
 An unobtrusive python backup file
 
     @author: ZennDogg, with a lot of help for find_stock_correlation from outside sources
