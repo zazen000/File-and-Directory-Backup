@@ -1,4 +1,4 @@
-# File and Directory Backup, Part 1
+# File and Directory Backup
 An unobtrusive python backup file
 
     Utility_Belt Designs, Tacoma, WA
