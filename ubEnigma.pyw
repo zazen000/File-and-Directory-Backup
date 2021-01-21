@@ -1,43 +1,7 @@
 import threading
-import cryptomath
 import sys, random
 from socket import *
 import csv
-
-
-def threaded(fn):
-    def wrapper(*args, **kwargs):
-        thread = threading.Thread(target=fn, args=args, kwargs=kwargs)
-        thread.start()
-        return thread
-    return wrapper
-
-
-def skt_server(port=0, format=''):
-    myHost = '127.0.0.1'  # '' = all available interfaces on host
-    myPort = port  # listen on a non-reserved port number
-    with socket( AF_INET, SOCK_STREAM ) as sockobj:  # make a TCP socket object
-        sockobj.bind( (myHost, myPort) )  # bind it to server port number
-        sockobj.listen()  # listen, allow 5 pending connects
-        connection, address = sockobj.accept()  # wait for next client connect
-        with connection:
-            while True:
-                data = connection.recv( 1024 )
-                if not data:
-                    break
-                from struct import unpack
-                message = unpack( format, data )
-
-
-def skt_client(port=0, format='', message=''):
-    HOST = '127.0.0.1'  # server name, or: 'starship.python.net'
-    PORT = port  # non-reserved port used by the server
-    with socket( AF_INET, SOCK_STREAM ) as s:
-        s.connect( (HOST, PORT) )
-        from struct import pack
-        data = pack( format, message )
-        s.sendall(data)
-
 
 
 SYMBOLS = """ !#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]
@@ -127,9 +91,9 @@ def write_binary_file(fmt='', filename='',*args, **kwargs):
     data = mystruct.pack(*args, **kwargs)
     with open(filename, "wb") as out:
         out.write(data)
+        
 
 ## Reads the binary file and upacks the data
-
 def read_binary_file(fmt='', filename=''):
     from struct import Struct
     fp = open(filename, "rb").read()
@@ -165,23 +129,12 @@ def write_csv_file(filename='', option="w"):
 def write_key(fmt='', filename='', *args):
     write_binary_file(fmt, filename, *args) 
 
-write_key('i', 'DATA/owm.bin', 2111)
-## Clandestine pass of key used to decrypt encoded API_ID to user file
 
+## Clandestine pass of key used to decrypt encoded API_ID to user file
 def read_key(fmt='', filename=''):
     key = read_binary_file(fmt, filename)
     mykey = int((key)[0])
     return mykey
-
-
-
-
-
-
-
-
-
-
 
 
 
