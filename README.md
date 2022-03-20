@@ -2,10 +2,10 @@
 An unobtrusive python backup file
 
     Utility_Belt Designs, Tacoma, WA
-    www.pythonOver60.rocks
+    www.zenndogg.com
     @author: ZennDogg
-    zenndogg@outlook.com
+    zenndogg@zenndogg.com
     
     For instructions, go to:
-    https://braveinternetmarketing.com/python/2020/10/02/file-and-directory-backup-part-1/
-    https://braveinternetmarketing.com/python/2020/10/02/file-and-directory-backup-part-2/
+    https://https://zenndogg.com/code/blog/2022/03/19/file-and-directory-backup-part-1/
+    https://https://zenndogg.com/code/blog/2022/03/19/file-and-backup-system-part-2/
